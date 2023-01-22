@@ -8,7 +8,7 @@ import NPC from './NPC.js';
 import PlayerMap from './PlayerMap.js';
 import QuestionScene from './QuestionScene.js';
 import MouseListener from './MouseListener.js';
-// import Carpet from './Carpet.js';
+import Carpet from './Carpet.js';
 import VictoryScene from './VictoryScene.js';
 import CoinEarner from './CoinEarner.js';
 import Snake from './snakeMiniGame/Snake.js';
@@ -18,11 +18,11 @@ export default class Level extends Scene {
 
   private startingQuestion: boolean;
 
-  // private greenCarpet: Carpet;
+  private greenCarpet: Carpet;
 
-  // private blueCarpet: Carpet;
+  private blueCarpet: Carpet;
 
-  // private redCarpet: Carpet;
+  private redCarpet: Carpet;
 
   private startingTicTacToe: boolean;
 
@@ -30,9 +30,9 @@ export default class Level extends Scene {
 
   private startingSnake: boolean;
 
-  // private carpetGameArray: Carpet[] = [new Carpet(this.maxX, this.maxY, 1), new Carpet(this.maxX, this.maxY, 2)];
+  private carpetGameArray: Carpet[] = [new Carpet(this.maxX, this.maxY, 1), new Carpet(this.maxX, this.maxY, 2)];
 
-  // private carpetWinArray: Carpet[] = [new Carpet(this.maxX, this.maxY, 3)];
+  private carpetWinArray: Carpet[] = [new Carpet(this.maxX, this.maxY, 3)];
 
   private npcArray: NPC[] = [new NPC(this.maxX, this.maxY, 1), new NPC(this.maxX, this.maxY, 2), new NPC(this.maxX, this.maxY, 3), new NPC(this.maxX, this.maxY, 4)];
 
@@ -64,15 +64,15 @@ export default class Level extends Scene {
       });
     }
 
-    // if (CoinEarner.score >= 0) {
-    //   this.carpetWinArray.forEach((carpet: Carpet) => {
-    //     if (this.player.isCollidingCarpet(carpet)) {
-    //       this.startingSnake = true;
-    //     }
-    //     return null;
-    //   });
-    // }
-    // }
+    if (CoinEarner.score >= 0) {
+      this.carpetWinArray.forEach((carpet: Carpet) => {
+        if (this.player.isCollidingCarpet(carpet)) {
+          this.startingSnake = true;
+        }
+        return null;
+      });
+    }
+
     // left up lockers top line
     if (this.player.getPosY() > 190.5) {
       if (this.player.getPosX() < 709) {
@@ -213,12 +213,12 @@ export default class Level extends Scene {
     this.npcArray.forEach((npc: NPC) => {
       npc.render(canvas);
     });
-    // this.carpetWinArray.forEach((carpet: Carpet) => {
-    //   carpet.render(canvas);
-    // });
-    // this.carpetGameArray.forEach((carpet: Carpet) => {
-    //   carpet.render(canvas);
-    // });
+    this.carpetWinArray.forEach((carpet: Carpet) => {
+      carpet.render(canvas);
+    });
+    this.carpetGameArray.forEach((carpet: Carpet) => {
+      carpet.render(canvas);
+    });
     this.player.render(canvas);
     CanvasUtil.writeTextToCanvas(canvas, `Score: ${CoinEarner.score}`, 100, 40, 'center', 'serif', 40, 'red');
   }

@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "homepage": "https://github.com/Alexandra-3319/TeamPopcorn12Test.git",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch "

@@ -9,4 +9,4 @@ export default class Body extends Drawable {
         this.image = CanvasUtil.loadNewImage('./assets/vertical.png');
     }
 }
-//# sourceMappingURL=body.js.map
+//# sourceMappingURL=Body.js.map

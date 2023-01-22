@@ -12,4 +12,4 @@ export default class Button extends Drawable {
         return this.buttonCodeValue;
     }
 }
-//# sourceMappingURL=button.js.map
+//# sourceMappingURL=Button.js.map

@@ -1,4 +1,4 @@
-import Button from './button.js';
+import Button from './Button.js';
 import CanvasUtil from './CanvasUtil.js';
 import CoinEarner from './CoinEarner.js';
 import Level from './Level.js';

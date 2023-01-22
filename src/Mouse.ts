@@ -2,7 +2,7 @@
 /* eslint-disable jsdoc/check-param-names */
 /* eslint-disable jsdoc/require-param-description */
 /* eslint-disable max-len */
-import Button from './button.js';
+import Button from './Button.js';
 import CanvasUtil from './CanvasUtil.js';
 import Drawable from './Drawable.js';
 

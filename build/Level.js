@@ -4,21 +4,15 @@ import CanvasUtil from './CanvasUtil.js';
 import NPC from './NPC.js';
 import PlayerMap from './PlayerMap.js';
 import QuestionScene from './QuestionScene.js';
-import Carpet from './Carpet.js';
 import VictoryScene from './VictoryScene.js';
 import CoinEarner from './CoinEarner.js';
 import Snake from './snakeMiniGame/Snake.js';
 export default class Level extends Scene {
     player;
     startingQuestion;
-    greenCarpet;
-    blueCarpet;
-    redCarpet;
     startingTicTacToe;
     startingVictory;
     startingSnake;
-    carpetGameArray = [new Carpet(this.maxX, this.maxY, 1), new Carpet(this.maxX, this.maxY, 2)];
-    carpetWinArray = [new Carpet(this.maxX, this.maxY, 3)];
     npcArray = [new NPC(this.maxX, this.maxY, 1), new NPC(this.maxX, this.maxY, 2), new NPC(this.maxX, this.maxY, 3), new NPC(this.maxX, this.maxY, 4)];
     constructor(maxX, maxY) {
         super(maxX, maxY);
@@ -44,14 +38,6 @@ export default class Level extends Scene {
                 }
                 return null;
             });
-            if (CoinEarner.score >= 0) {
-                this.carpetWinArray.forEach((carpet) => {
-                    if (this.player.isCollidingCarpet(carpet)) {
-                        this.startingSnake = true;
-                    }
-                    return null;
-                });
-            }
         }
         if (this.player.getPosY() > 190.5) {
             if (this.player.getPosX() < 709) {
@@ -183,12 +169,6 @@ export default class Level extends Scene {
         CanvasUtil.clearCanvas(canvas);
         this.npcArray.forEach((npc) => {
             npc.render(canvas);
-        });
-        this.carpetWinArray.forEach((carpet) => {
-            carpet.render(canvas);
-        });
-        this.carpetGameArray.forEach((carpet) => {
-            carpet.render(canvas);
         });
         this.player.render(canvas);
         CanvasUtil.writeTextToCanvas(canvas, `Score: ${CoinEarner.score}`, 100, 40, 'center', 'serif', 40, 'red');
